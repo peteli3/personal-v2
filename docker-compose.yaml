@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        GIT_COMMIT: "${GIT_COMMIT:-unknown}"
+    platform: linux/amd64
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.28.0-alpine
+    platform: linux/amd64
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf:ro"
+    restart: unless-stopped
