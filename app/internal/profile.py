@@ -27,29 +27,82 @@ LINK_GROUPS = [
     {
         "title": "Professional",
         "links": [
-            {"label": "LinkedIn", "url": "https://www.linkedin.com/in/peteclimbs/", "icon": "linkedin"},
-            {"label": "GitHub", "url": "https://github.com/peteli3", "icon": "github"},
-            {"label": "Resume (PDF)", "url": RESUME_URL, "icon": "resume"},
+            {
+                "label": "LinkedIn",
+                "url": "https://www.linkedin.com/in/peteclimbs/",
+                "icon": "linkedin",
+                "target": "_blank",
+            },
+            {
+                "label": "GitHub",
+                "url": "https://github.com/peteli3",
+                "icon": "github",
+                "target": "_blank",
+            },
+            {
+                "label": "Resume (PDF)",
+                "url": RESUME_URL,
+                "icon": "resume",
+                "target": "_blank",
+            },
         ],
     },
     {
         "title": "Sports",
         "links": [
-            {"label": "KAYA", "url": "https://kaya-app.kayaclimb.com/share/profile?id=86231", "emoji": "🧗"},
-            {"label": "Strava", "url": "https://www.strava.com/athletes/45904550", "icon": "strava"},
-            {"label": "Slopes", "url": "https://my.getslopes.com/app/addFriend/p0QWArnmwV", "emoji": "⛷️"},
+            {
+                "label": "KAYA",
+                "url": "https://kaya-app.kayaclimb.com/share/profile?id=86231",
+                "emoji": "🧗",
+                "target": "_blank",
+            },
+            {
+                "label": "Strava",
+                "url": "https://www.strava.com/athletes/45904550",
+                "icon": "strava",
+                "target": "_blank",
+            },
+            {
+                "label": "Slopes",
+                "url": "https://my.getslopes.com/app/addFriend/p0QWArnmwV",
+                "emoji": "⛷️",
+                "target": "_blank",
+            },
         ],
     },
     {
         "title": "Life",
         "links": [
-            {"label": "Beli", "url": "https://beliapp.co/lists/peteli", "emoji": "🍽️"},
+            {
+                "label": "Beli",
+                "url": "https://beliapp.co/lists/peteli",
+                "emoji": "🍽️",
+                "target": "_blank",
+            },
         ],
     },
     {
         "title": "Talks",
         "links": [
-            {"label": "Conference Talk", "url": "https://youtu.be/g4f2lHz8meo?t=383", "icon": "youtube"},
+            {
+                "label": "Conference Talk",
+                "url": "https://youtu.be/g4f2lHz8meo?t=383",
+                "icon": "youtube",
+                "target": "_blank",
+            },
+        ],
+    },
+    {
+        "title": "Side Quests",
+        "links": [
+            # Internal link to the mortgage-calculator app, served by the same
+            # reverse proxy under /mortgage-calculator. Uses that app's favicon
+            # (at its prefixed static path) as the button icon via "image".
+            {
+                "label": "Mortgage Calculator",
+                "url": "/mortgage-calculator/",
+                "image": "/mortgage-calculator/static/favicon.ico",
+            },
         ],
     },
 ]
