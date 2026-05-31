@@ -6,55 +6,16 @@
     <link href="/static/output.css" rel="stylesheet">
     <script src="/static/htmx.org@2.0.9/dist/htmx.min.js"></script>
     <script src="/static/htmx-ext-json-enc@2.0.1/json-enc.js"></script>
-    <style>
-        nav a {
-            border: 2px solid transparent;
-        }
-        nav a:hover {
-            border-color: color-mix(in srgb, currentColor 30%, transparent);
-        }
-    </style>
 </head>
 <body>
-    <div class="flex flex-col h-screen justify-between">
-        <div class="navbar bg-base-100 shadow-md">
-            <div class="container mx-auto px-4 flex items-center gap-6">
-                <h1 class="font-bold" style="font-size: 1.5rem;">Personal</h1>
-                <nav class="flex gap-2">
-                    <a class="btn btn-ghost" href="/"{% if request.url.path == '/' %} style="border: 2px solid currentColor;"{% endif %}>Home</a>
-                    <a class="btn btn-ghost" href="/counter"{% if request.url.path == '/counter' %} style="border: 2px solid currentColor;"{% endif %}>Counter</a>
-                    <a class="btn btn-ghost" href="/table"{% if request.url.path == '/table' %} style="border: 2px solid currentColor;"{% endif %}>Table</a>
-                </nav>
-            </div>
-        </div>
+    <div class="flex flex-col h-screen">
         <main class="flex-1 flex flex-col">
             <div class="container mx-auto px-4 flex-1 flex flex-col">
                 {% block content %}{% endblock %}
             </div>
         </main>
-        <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
-            <aside class="flex gap-4 text-sm opacity-70 items-center flex-wrap justify-center">
-                <span>Version: {{ version }} ({{ git_commit }})</span>
-                <span class="opacity-40">|</span>
-                <span>Up since: <span id="restart-time" data-utc="{{ restart_time }}">{{ restart_time }}</span></span>
-            </aside>
-        </footer>
     </div>
 
     {% block scripts %}{% endblock %}
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const restartTimeEl = document.getElementById('restart-time');
-            if (restartTimeEl) {
-                const utc = restartTimeEl.dataset.utc;
-                restartTimeEl.textContent = new Date(utc).toLocaleString(undefined, {
-                    year: 'numeric', month: 'long', day: 'numeric',
-                    hour: 'numeric', minute: '2-digit', second: '2-digit',
-                    timeZoneName: 'short'
-                });
-            }
-        });
-    </script>
 </body>
 </html>

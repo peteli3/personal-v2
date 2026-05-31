@@ -1,18 +1,44 @@
 {% extends "base.html" %}
+{% from "_icons.html" import brand_icon %}
 
-{% block title %}Home{% endblock %}
+{% block title %}{{ name }}{% endblock %}
 
 {% block content %}
-<div class="hero flex-1">
-    <div class="hero-content text-center">
-        <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Hello there</h1>
-            <p class="py-6">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                quasi. In deleniti eaque aut repudiandae et a id nisi.
-            </p>
-            <a class="btn btn-primary" href="/table">Get Started</a>
+{# Split hero: profile on the left, grouped links on the right (stacks on mobile). #}
+<div class="flex-1 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-16 py-10 lg:py-16">
+
+    {# Left: profile photo + name + tagline #}
+    <aside class="flex flex-col items-center lg:items-start text-center lg:text-left lg:sticky lg:top-16 lg:w-80 shrink-0">
+        <div class="avatar">
+            <div class="w-40 h-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 bg-base-300 grid place-items-center overflow-hidden">
+                {# Drop a photo at app/static/profile.jpg. Until then, show initials. #}
+                <span class="placeholder-initials text-4xl font-bold opacity-50">{{ name[:1] | upper }}</span>
+                <img src="{{ profile_image }}" alt="{{ name }}"
+                     class="w-full h-full object-cover"
+                     onerror="this.remove();" />
+            </div>
         </div>
-    </div>
+        <h1 class="mt-6 text-4xl font-bold">{{ name }}</h1>
+        <p class="mt-3 text-base opacity-70 max-w-xs">{{ tagline }}</p>
+    </aside>
+
+    {# Right: grouped link buttons #}
+    <section class="w-full max-w-md flex flex-col gap-8">
+        {% for group in link_groups %}
+        <div>
+            <h2 class="text-xs font-semibold uppercase tracking-widest opacity-50 mb-3">{{ group.title }}</h2>
+            <div class="flex flex-col gap-3">
+                {% for link in group.links %}
+                <a class="btn btn-outline justify-start gap-3 normal-case"
+                   href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                    {% if link.icon %}{{ brand_icon(link.icon) }}{% elif link.emoji %}<span class="text-lg leading-none">{{ link.emoji }}</span>{% endif %}
+                    <span>{{ link.label }}</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
 </div>
 {% endblock %}

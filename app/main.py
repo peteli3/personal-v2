@@ -3,13 +3,10 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from .internal.common import templates, VERSION, GIT_COMMIT
-from .routers.table import router as table_router
-from .routers.counter import router as counter_router
+from .internal import profile
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
-app.include_router(table_router)
-app.include_router(counter_router)
 
 
 @app.get("/version")
@@ -27,7 +24,10 @@ def get_home_page(request: Request):
         name="index.html",
         context={
             "request": request,
-            "version": VERSION,
-            "git_commit": GIT_COMMIT,
+            "name": profile.NAME,
+            "tagline": profile.TAGLINE,
+            "profile_image": profile.PROFILE_IMAGE,
+            "resume_url": profile.RESUME_URL,
+            "link_groups": profile.LINK_GROUPS,
         },
     )
