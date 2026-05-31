@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}FastAPI Example{% endblock %}</title>
+    <title>{% block title %}Personal{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link href="/static/output.css" rel="stylesheet">
     <script src="/static/htmx.org@2.0.9/dist/htmx.min.js"></script>
@@ -19,7 +19,7 @@
     <div class="flex flex-col h-screen justify-between">
         <div class="navbar bg-base-100 shadow-md">
             <div class="container mx-auto px-4 flex items-center gap-6">
-                <h1 class="font-bold" style="font-size: 1.5rem;">FastAPI Example</h1>
+                <h1 class="font-bold" style="font-size: 1.5rem;">Personal</h1>
                 <nav class="flex gap-2">
                     <a class="btn btn-ghost" href="/"{% if request.url.path == '/' %} style="border: 2px solid currentColor;"{% endif %}>Home</a>
                     <a class="btn btn-ghost" href="/counter"{% if request.url.path == '/counter' %} style="border: 2px solid currentColor;"{% endif %}>Counter</a>

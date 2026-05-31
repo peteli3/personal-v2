@@ -1,7 +1,6 @@
-# Fastdaisy
+# Personal
 
-A PyHAT starter template: FastAPI, Jinja2, daisyUI, HTMX, Docker
-
+Quick start guide:
 ```bash
 ./scripts/run.sh up          # start (from repo root)
 ./scripts/run.sh restart     # rebuild and restart
