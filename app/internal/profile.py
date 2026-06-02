@@ -2,8 +2,8 @@
 
 Replace every PLACEHOLDER below with your real info:
   - NAME / TAGLINE: how you introduce yourself
-  - PROFILE_IMAGE: drop a photo at app/static/profile.jpg (or change the path)
-  - RESUME_URL: link to your resume PDF in object storage
+  - PROFILE_IMAGE: public URL of your photo (here, a Linode object-storage object)
+  - RESUME_URL: public URL of your resume PDF (here, a Linode object-storage object)
   - the "url" of each link in LINK_GROUPS (all currently "#")
 
 Each link uses either an ``icon`` (an inline brand SVG, see app/templates/_icons.html)
@@ -16,11 +16,15 @@ NAME = "Peter Li"
 # Edit to taste.
 TAGLINE = "Senior Software Engineer"
 
-# PLACEHOLDER: drop your photo at app/static/profile.jpg, or point this elsewhere.
-PROFILE_IMAGE = "/static/profile.jpg"
+# Profile photo, hotlinked from Linode object storage (object must be public-read).
+PROFILE_IMAGE = (
+    "https://personal-us-lax.us-lax-1.linodeobjects.com/personal/waiola.webp"
+)
 
-# PLACEHOLDER: link to your resume PDF in object storage.
-RESUME_URL = "#"
+# Resume PDF, hotlinked from Linode object storage (object must be public-read).
+RESUME_URL = (
+    "https://personal-us-lax.us-lax-1.linodeobjects.com/personal/nov-2024-resume.pdf"
+)
 
 # Grouped links shown on the landing page. Fill in each "url".
 LINK_GROUPS = [
